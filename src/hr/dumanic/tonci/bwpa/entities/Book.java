@@ -2,6 +2,8 @@ package hr.dumanic.tonci.bwpa.entities;
 
 import java.util.Arrays;
 
+import hr.dumanic.tonci.bwpa.constants.BookGenre;
+
 public class Book extends Bookmark{
 
 	private int publicationYear;
@@ -77,6 +79,10 @@ public class Book extends Bookmark{
 	}
 	@Override
 	public boolean isKidFriendlyEligible() {
+		
+		if(genre.equals(BookGenre.SELF_HELP) || genre.equals(BookGenre.PHILOSOPHY) ) {
+			return false;
+		}
 		return true;
 	}
 
