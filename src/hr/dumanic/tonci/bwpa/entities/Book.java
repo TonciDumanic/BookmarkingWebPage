@@ -75,5 +75,10 @@ public class Book extends Bookmark{
 		return "Book [publicationYear=" + publicationYear + ", publisher=" + publisher + ", authors="
 				+ Arrays.toString(authors) + ", genre=" + genre + ", amazonRating=" + amazonRating + "]";
 	}
+	@Override
+	public boolean isKidFriendlyEligible() {
+		return true;
+	}
 
+	
 }

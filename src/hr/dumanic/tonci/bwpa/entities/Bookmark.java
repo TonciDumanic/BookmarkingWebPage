@@ -1,6 +1,6 @@
 package hr.dumanic.tonci.bwpa.entities;
 
-public class Bookmark {
+public abstract class Bookmark {
 	private long id;
 	private String title;
 	private String profile;
@@ -45,6 +45,7 @@ public class Bookmark {
 		return "Bookmark [id=" + id + ", title=" + title + ", profile=" + profile + "]";
 	}
 	
+	public abstract boolean isKidFriendlyEligible();
 	
 
 }
