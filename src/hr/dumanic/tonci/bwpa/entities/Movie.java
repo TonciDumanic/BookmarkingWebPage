@@ -2,6 +2,9 @@ package hr.dumanic.tonci.bwpa.entities;
 
 import java.util.Arrays;
 
+import hr.dumanic.tonci.bwpa.constants.BookGenre;
+import hr.dumanic.tonci.bwpa.constants.MovieGenre;
+
 public class Movie extends Bookmark{
 	
 	private int releaseYear;
@@ -77,7 +80,11 @@ public class Movie extends Bookmark{
 	}
 	@Override
 	public boolean isKidFriendlyEligible() {
-		// TODO Auto-generated method stub
+		
+		if(genre.equals(MovieGenre.HORROR) || genre.equals(MovieGenre.THRILLERS)) {
+			return false;
+		}
+		
 		return true;
 	}
 	

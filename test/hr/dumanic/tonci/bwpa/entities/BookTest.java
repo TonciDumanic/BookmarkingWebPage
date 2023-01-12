@@ -27,7 +27,6 @@ class BookTest {
 		assertFalse("The PHILOSOPHY should return False",isKidFriendlyEligible);
 		
 		
-		
 		//Test 3: SELF_HELP genre -> False
 		 book = BookmarkManager.getInstance().createBook(4000,"Walden",1854,"Wilder Publications",new String [] {"Henry David Thoreau"},BookGenre.SELF_HELP,4.3);
 		 isKidFriendlyEligible = book.isKidFriendlyEligible();
