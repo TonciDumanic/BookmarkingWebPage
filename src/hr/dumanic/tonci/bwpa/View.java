@@ -53,8 +53,8 @@ public class View {
 						
 						String kidFriendlyStatus = getKidFriendlyStatusDecission(bookmark);
 						if(!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
-							bookmark.setKidFriendlyStatus(kidFriendlyStatus);
-							System.out.println("Kid-friendly status: " + kidFriendlyStatus + ", " + bookmark);
+							BookmarkControler.getInstance().setKidFriendlyStatus(kidFriendlyStatus,bookmark);
+							
 						}
 					}
 					
