@@ -6,6 +6,7 @@ import hr.dumanic.tonci.bwpa.constants.UserType;
 import hr.dumanic.tonci.bwpa.controlers.BookmarkControler;
 import hr.dumanic.tonci.bwpa.entities.Bookmark;
 import hr.dumanic.tonci.bwpa.entities.User;
+import hr.dumanic.tonci.bwpa.partner.Sherable;
 
 public class View {
 	
@@ -49,13 +50,27 @@ public class View {
 				
 				if(user.getUserType().equals(UserType.EDITOR) || user.getUserType().endsWith(UserType.CHIEF_EDITOR)) {
 					
+					//Mark as kid-friendly
 					if(bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
 						
 						String kidFriendlyStatus = getKidFriendlyStatusDecission(bookmark);
 						if(!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
-							BookmarkControler.getInstance().setKidFriendlyStatus(kidFriendlyStatus,bookmark);
+							BookmarkControler.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus,bookmark);
 							
 						}
+					}
+					
+					// Sharing the book or WebLink if kid friendly 
+					if(bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED) && (bookmark instanceof Sherable)) {
+						
+						boolean isShared =getShareDecission(); 
+
+						if(isShared){
+							
+							BookmarkControler.getInstance().share(user,bookmark);
+						
+						}
+						
 					}
 					
 				}
@@ -75,8 +90,14 @@ public class View {
 
 			System.out.print(bookmark);
 		}*/
-		
 	}
+	
+	private static boolean getShareDecission() {
+		return Math.random() < 0.5 ? true: false;
+
+	
+	}
+
 
 	private static String getKidFriendlyStatusDecission(Bookmark bookmark) {
 		double randomVal = Math.random();
