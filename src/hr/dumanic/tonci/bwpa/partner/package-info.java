@@ -1,0 +1,1 @@
+package hr.dumanic.tonci.bwpa.partner;
