@@ -1,6 +1,10 @@
 package hr.dumanic.tonci.bwpa.entities;
 
-public class WebLink extends Bookmark{
+import org.apache.commons.lang3.StringUtils;
+
+import hr.dumanic.tonci.bwpa.partner.Sherable;
+
+public class WebLink extends Bookmark implements Sherable{
 	public String url;
 	public String host;
 	/**
@@ -41,5 +45,18 @@ public class WebLink extends Bookmark{
 		return true;
 	}
 	
+	@Override
+	public String getItemData() {
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("<item>");
+			builder.append("<type>WebLink</type>");
+			builder.append("<title>").append(getTitle()).append("</title>");
+			builder.append("<url>").append(url).append("</url>");
+			builder.append("<host>").append(host).append("</host>");
+		builder.append("</item>");
+		
+		return builder.toString();
+	}
 	
 }
