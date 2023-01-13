@@ -1,9 +1,13 @@
 package hr.dumanic.tonci.bwpa.entities;
 
+import hr.dumanic.tonci.bwpa.constants.KidFriendlyStatus;
+
 public abstract class Bookmark {
 	private long id;
 	private String title;
 	private String profile;
+	private String kidFriendlyStatus = KidFriendlyStatus.UNKNOWN;
+	
 	/**
 	 * @return the id
 	 */
@@ -46,6 +50,12 @@ public abstract class Bookmark {
 	}
 	
 	public abstract boolean isKidFriendlyEligible();
+	public String getKidFriendlyStatus() {
+		return kidFriendlyStatus;
+	}
+	public void setKidFriendlyStatus(String kidFriendlyStatus) {
+		this.kidFriendlyStatus = kidFriendlyStatus;
+	}
 	
 
 }
