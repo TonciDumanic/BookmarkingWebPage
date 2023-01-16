@@ -9,6 +9,7 @@ import hr.dumanic.tonci.bwpa.entities.User;
 import hr.dumanic.tonci.bwpa.entities.UserBookmark;
 import hr.dumanic.tonci.bwpa.managers.BookmarkManager;
 import hr.dumanic.tonci.bwpa.managers.UserManager;
+import hr.dumanic.tonci.bwpa.util.IOUtil;
 
 public class DataStore {
 
@@ -23,12 +24,28 @@ public class DataStore {
 	private static int bookmarkIndex = 0;
 	
 	private static void loadUsers() {
-		users[0] = UserManager.getInstance().createUser(1000,"user0@semanticsquare.com","test","John","M",Gender.MALE,UserType.USER);
+/*		users[0] = UserManager.getInstance().createUser(1000,"user0@semanticsquare.com","test","John","M",Gender.MALE,UserType.USER);
 		users[1] = UserManager.getInstance().createUser(1001,"user1@semanticsquare.com","test","Sam","M",Gender.MALE,UserType.USER);
 		users[2] = UserManager.getInstance().createUser(1002,"user2@semanticsquare.com","test","Anita","M",Gender.MALE,UserType.EDITOR);
 		users[3] = UserManager.getInstance().createUser(1003,"user3@semanticsquare.com","test","Sara","M",Gender.FEMALE,UserType.EDITOR);
 		users[4] = UserManager.getInstance().createUser(1004,"user4@semanticsquare.com","test","Dheeru","M",Gender.MALE,UserType.CHIEF_EDITOR);   
-	
+	*/
+		String[] data = new String[TOTAL_USER_COUNT];
+		IOUtil.read(data, "User");
+		int rowNumber = 0;
+		
+		for(String row: data) {
+			String[] values = row.split("\t");
+			
+			int gender = Gender.MALE;
+			if(values[5].equals("f")) {
+				gender = Gender.FEMALE;
+			} else if (values[5].equals("t")) {
+				gender = Gender.OTHER;
+			}
+				
+			users[rowNumber++] = UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4], gender, values[6]);
+		}
 	}
 	
 
