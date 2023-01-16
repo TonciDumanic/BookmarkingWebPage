@@ -5,7 +5,7 @@ import hr.dumanic.tonci.bwpa.entities.User;
 import hr.dumanic.tonci.bwpa.managers.BookmarkManager;
 
 public class BookmarkControler {
-//xcyxc
+
 	private static BookmarkControler instance = new BookmarkControler();
 	
 	private void BookmarkControler() {

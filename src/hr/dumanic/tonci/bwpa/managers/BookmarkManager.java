@@ -1,4 +1,7 @@
 package hr.dumanic.tonci.bwpa.managers;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 import hr.dumanic.tonci.bwpa.DataStore;
 import hr.dumanic.tonci.bwpa.dao.BookmarkDao;
 import hr.dumanic.tonci.bwpa.entities.Book;
@@ -7,6 +10,8 @@ import hr.dumanic.tonci.bwpa.entities.Movie;
 import hr.dumanic.tonci.bwpa.entities.User;
 import hr.dumanic.tonci.bwpa.entities.UserBookmark;
 import hr.dumanic.tonci.bwpa.entities.WebLink;
+import hr.dumanic.tonci.bwpa.util.HttpConnect;
+import hr.dumanic.tonci.bwpa.util.IOUtil;
 
 public class BookmarkManager {
 
@@ -72,6 +77,24 @@ public class BookmarkManager {
 		
 		userBookmark.setUser(user);
 		userBookmark.setBookmark(bookmark);
+	
+		if (bookmark instanceof WebLink) {
+			try {				
+				String url = ((WebLink)bookmark).getUrl();
+				if (!url.endsWith(".pdf")) {
+					String webpage = HttpConnect.download(((WebLink)bookmark).getUrl());
+					if (webpage != null) {
+						IOUtil.write(webpage, bookmark.getId());
+					}
+				}				
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		bookmarkDao.saveUserBookmark(userBookmark);
 	}
