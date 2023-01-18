@@ -1,13 +1,15 @@
 package hr.dumanic.tonci.bwpa;
 
+import java.util.List;
+
 import hr.dumanic.tonci.bwpa.entities.Bookmark;
 import hr.dumanic.tonci.bwpa.entities.User;
 import hr.dumanic.tonci.bwpa.managers.BookmarkManager;
 import hr.dumanic.tonci.bwpa.managers.UserManager;
 
 public class Launch {
-	private static User[] users;
-	private static Bookmark[][] bookmarks;
+	private static List<User> users;
+	private static List<List<Bookmark>> bookmarks;
 	
 	private static void loadData() {
 		System.out.println("1. Loading data...");
@@ -28,7 +30,9 @@ public class Launch {
 	}
 	
 	private static void printBookmarkData() {
-		for(Bookmark[] bookmarkList:bookmarks) {
+		
+		
+		for(List<Bookmark> bookmarkList:bookmarks) {
 			for(Bookmark bookmark: bookmarkList) {
 				System.out.println(bookmark);
 

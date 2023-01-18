@@ -1,6 +1,7 @@
 package hr.dumanic.tonci.bwpa.managers;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import hr.dumanic.tonci.bwpa.DataStore;
 import hr.dumanic.tonci.bwpa.dao.BookmarkDao;
@@ -67,7 +68,7 @@ public class BookmarkManager {
 		return webLink;
 	}
 	
-	public Bookmark[][] getBookmarks() {
+	public List<List<Bookmark>> getBookmarks() {
 	
 		return DataStore.getBookmarks();
 	}

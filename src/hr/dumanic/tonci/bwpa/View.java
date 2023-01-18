@@ -1,5 +1,7 @@
 package hr.dumanic.tonci.bwpa;
 
+import java.util.List;
+
 import hr.dumanic.tonci.bwpa.constants.KidFriendlyStatus;
 import hr.dumanic.tonci.bwpa.constants.UserType;
 /*Testing Git*/
@@ -26,13 +28,13 @@ public class View {
 //		}
 //	}
 
-	public static void browse(User user, Bookmark[][] bookmarks) {
+	public static void browse(User user, List<List<Bookmark>> bookmarks) {
 		
 		System.out.println("\nUser " + user.getEmail()+  " is browsing items!");
 		
 		int bookmarkCount = 0;
 		
-		for(Bookmark[] bookmarkList:bookmarks) {
+		for(List<Bookmark> bookmarkList:bookmarks) {
 			for(Bookmark bookmark:bookmarkList) {
 				//Bookmarking!!
 				if(bookmarkCount < DataStore.USER_BOOKMARK_LIMIT) {

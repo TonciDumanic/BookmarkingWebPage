@@ -3,6 +3,8 @@
  * 
  */
 package hr.dumanic.tonci.bwpa.managers;
+import java.util.List;
+
 import hr.dumanic.tonci.bwpa.dao.UserDao;
 import hr.dumanic.tonci.bwpa.entities.User;
 /**
@@ -38,7 +40,7 @@ public class UserManager {
 		
 	}
 	
-	public User[] getUsers( ) {
+	public List<User> getUsers( ) {
 		return userDao.getUser();
 	}
 	
