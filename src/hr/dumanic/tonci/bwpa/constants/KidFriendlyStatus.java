@@ -1,12 +1,19 @@
 package hr.dumanic.tonci.bwpa.constants;
 
-public class KidFriendlyStatus {
+public enum KidFriendlyStatus {
 	
-	private void KidFriendlyStatus() {}
-	
-	public static final String APPROVED = "approved";
-	public static final String REJECTED = "rejected";
-	public static final String UNKNOWN = "unknown";
 
+APPROVED("approved"),
+REJECTED("rejected"),
+UNKNOWN("unknown");
 
+KidFriendlyStatus(String string) {
+	this.value = string;
+}
+
+private String value;
+
+public String getValue() {
+	return this.value;
+}
 }

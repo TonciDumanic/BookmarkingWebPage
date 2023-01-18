@@ -5,6 +5,8 @@
 package hr.dumanic.tonci.bwpa.managers;
 import java.util.List;
 
+import hr.dumanic.tonci.bwpa.constants.Gender;
+import hr.dumanic.tonci.bwpa.constants.UserType;
 import hr.dumanic.tonci.bwpa.dao.UserDao;
 import hr.dumanic.tonci.bwpa.entities.User;
 /**
@@ -24,7 +26,7 @@ public class UserManager {
 		return instance;
 	}
 	
-	public User createUser(long id, String email, String password, String firstName, String lastName, int gender, String UserType) {
+	public User createUser(long id, String email, String password, String firstName, String lastName, Gender gender, UserType UserType) {
 		
 		User user = new User();
 		

@@ -1,11 +1,18 @@
 package hr.dumanic.tonci.bwpa.constants;
 
-public class Gender {
+public enum Gender {
+	 MALE(0),
+	FEMALE(1),
+	OTHER(2);
 
-	private Gender() {}
+	private int value;
 	
-	public static final int MALE = 0;
-	public static final int FEMALE = 1;
-	public static final int OTHER = 2;
-
+	private Gender(int gender) { 
+		this.value = gender;
+	}
+	
+	public int getValue() {
+		return value;
+	}
+	
 }

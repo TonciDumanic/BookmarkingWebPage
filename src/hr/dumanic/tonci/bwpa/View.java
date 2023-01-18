@@ -50,20 +50,20 @@ public class View {
 					}
 				}
 				
-				if(user.getUserType().equals(UserType.EDITOR) || user.getUserType().endsWith(UserType.CHIEF_EDITOR)) {
+				if(user.getUserType().equals(UserType.EDITOR) || user.getUserType().equals(UserType.CHIEF_EDITOR)) {
 					
 					//Mark as kid-friendly
-					if(bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
+					if(bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN.getValue())) {
 						
-						String kidFriendlyStatus = getKidFriendlyStatusDecission(bookmark);
-						if(!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
+						KidFriendlyStatus kidFriendlyStatus = getKidFriendlyStatusDecission(bookmark);
+						if(!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN.getValue())) {
 							BookmarkControler.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus,bookmark);
 							
 						}
 					}
 					
 					// Sharing the book or WebLink if kid friendly 
-					if(bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED) && (bookmark instanceof Sherable)) {
+					if(bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED.getValue()) && (bookmark instanceof Sherable)) {
 						
 						boolean isShared =getShareDecission(); 
 
@@ -101,7 +101,7 @@ public class View {
 	}
 
 
-	private static String getKidFriendlyStatusDecission(Bookmark bookmark) {
+	private static KidFriendlyStatus getKidFriendlyStatusDecission(Bookmark bookmark) {
 		double randomVal = Math.random();
 	     
 	    return randomVal < 0.4 ? KidFriendlyStatus.APPROVED :

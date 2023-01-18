@@ -27,12 +27,7 @@ public class DataStore {
 	private static List<UserBookmark> userBookmarks = new ArrayList<>();
 	
 	private static void loadUsers() {
-/*		users[0] = UserManager.getInstance().createUser(1000,"user0@semanticsquare.com","test","John","M",Gender.MALE,UserType.USER);
-		users[1] = UserManager.getInstance().createUser(1001,"user1@semanticsquare.com","test","Sam","M",Gender.MALE,UserType.USER);
-		users[2] = UserManager.getInstance().createUser(1002,"user2@semanticsquare.com","test","Anita","M",Gender.MALE,UserType.EDITOR);
-		users[3] = UserManager.getInstance().createUser(1003,"user3@semanticsquare.com","test","Sara","M",Gender.FEMALE,UserType.EDITOR);
-		users[4] = UserManager.getInstance().createUser(1004,"user4@semanticsquare.com","test","Dheeru","M",Gender.MALE,UserType.CHIEF_EDITOR);   
-	*/
+
 		List<String> data = new ArrayList<>();
 		
 		IOUtil.read(data, "User");
@@ -40,14 +35,14 @@ public class DataStore {
 		for(String row: data) {
 			String[] values = row.split("\t");
 			
-			int gender = Gender.MALE;
+			Gender gender = Gender.MALE;
 			if(values[5].equals("f")) {
 				gender = Gender.FEMALE;
 			} else if (values[5].equals("t")) {
 				gender = Gender.OTHER;
 			}
 				
-			User user = UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4], gender, values[6]);
+			User user = UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4], gender, UserType.valueOf(values[6]));
 			users.add(user);
 		}
 	}
@@ -86,7 +81,7 @@ public class DataStore {
 			
 			
 					
-			Bookmark bookmark = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]), values[1],"", Integer.parseInt(values[2]), cast, directors, values[5], Double.parseDouble(values[6]));
+			Bookmark bookmark = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]), values[1],"", Integer.parseInt(values[2]), cast, directors, MovieGenre.valueOf(values[5]), Double.parseDouble(values[6]));
 			bookmarkList.add(bookmark);
 
 		}
@@ -105,7 +100,7 @@ public class DataStore {
 		
 			String[] authors =  values[4].split(",");
 					
-			Bookmark bookmark = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]), values[1], Integer.parseInt(values[2]), values[3], authors, values[5], Double.parseDouble(values[6])/*, values[7]*/);
+			Bookmark bookmark = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]), values[1], Integer.parseInt(values[2]), values[3], authors, BookGenre.valueOf(values[5]), Double.parseDouble(values[6]));
 			bookmarkList.add(bookmark);
 
 		}

@@ -1,5 +1,6 @@
 package hr.dumanic.tonci.bwpa.controlers;
 
+import hr.dumanic.tonci.bwpa.constants.KidFriendlyStatus;
 import hr.dumanic.tonci.bwpa.entities.Bookmark;
 import hr.dumanic.tonci.bwpa.entities.User;
 import hr.dumanic.tonci.bwpa.managers.BookmarkManager;
@@ -21,7 +22,7 @@ public class BookmarkControler {
 		BookmarkManager.getInstance().saveUsersBookmark(user,bookmark);
 	}
 
-	public void setKidFriendlyStatus(User user, String kidFriendlyStatus,Bookmark bookmark) {
+	public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus,Bookmark bookmark) {
 		BookmarkManager.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus,bookmark);
 	}
 

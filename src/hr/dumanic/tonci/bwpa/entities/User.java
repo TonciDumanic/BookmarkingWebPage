@@ -1,5 +1,8 @@
 package hr.dumanic.tonci.bwpa.entities;
 
+import hr.dumanic.tonci.bwpa.constants.Gender;
+import hr.dumanic.tonci.bwpa.constants.UserType;
+
 public class User {
 	
 	private long id;
@@ -7,8 +10,8 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
-	private int gender;
-	private String userType;
+	private Gender gender;
+	private UserType userType;
 	
 	/**
 	 * @return the id
@@ -73,25 +76,25 @@ public class User {
 	/**
 	 * @return the gender
 	 */
-	public int getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 	/**
 	 * @param gender the gender to set
 	 */
-	public void setGender(int gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 	/**
 	 * @return the userType
 	 */
-	public String getUserType() {
+	public UserType getUserType() {
 		return userType;
 	}
 	/**
 	 * @param userType the userType to set
 	 */
-	public void setUserType(String userType) {
+	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
 	@Override

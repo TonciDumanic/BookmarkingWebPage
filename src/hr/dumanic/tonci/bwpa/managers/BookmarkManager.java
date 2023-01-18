@@ -4,6 +4,9 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import hr.dumanic.tonci.bwpa.DataStore;
+import hr.dumanic.tonci.bwpa.constants.BookGenre;
+import hr.dumanic.tonci.bwpa.constants.KidFriendlyStatus;
+import hr.dumanic.tonci.bwpa.constants.MovieGenre;
 import hr.dumanic.tonci.bwpa.dao.BookmarkDao;
 import hr.dumanic.tonci.bwpa.entities.Book;
 import hr.dumanic.tonci.bwpa.entities.Bookmark;
@@ -25,7 +28,7 @@ public class BookmarkManager {
 		return instance;
 	}
 	
-	public Movie createMovie( long id,String title,	String profile, int releaseYear, String[] cast, String[] directors, String genre, double imdbRating) {
+	public Movie createMovie( long id,String title,	String profile, int releaseYear, String[] cast, String[] directors, MovieGenre genre, double imdbRating) {
 		
 		Movie movie = new Movie();
 
@@ -41,7 +44,7 @@ public class BookmarkManager {
 		return movie;
 	}
 	
-	public Book createBook( long id,String title,int publicationYear,String publisher,String[] authors,String genre,double amazonRating) {
+	public Book createBook( long id,String title,int publicationYear,String publisher,String[] authors,BookGenre genre,double amazonRating) {
 		
 		Book book = new Book();
 
@@ -100,7 +103,7 @@ public class BookmarkManager {
 		bookmarkDao.saveUserBookmark(userBookmark);
 	}
 
-	public void setKidFriendlyStatus(User user, String kidFriendlyStatus, Bookmark bookmark) {
+	public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus, Bookmark bookmark) {
 		bookmark.setKidFriendlyStatus(kidFriendlyStatus);
 		bookmark.setKidFriendlyMarkedBy(user);
 		System.out.println("Kid-friendly status: " + kidFriendlyStatus + ", marked by " + user.getEmail() + ", " + bookmark);

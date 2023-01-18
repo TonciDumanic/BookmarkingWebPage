@@ -12,7 +12,7 @@ public class Book extends Bookmark implements Sherable{
 	private int publicationYear;
 	private String publisher;
 	private String[] authors;
-	private String genre;
+	private BookGenre genre;
 	private double amazonRating;
 	
 	/**
@@ -54,13 +54,13 @@ public class Book extends Bookmark implements Sherable{
 	/**
 	 * @return the genre
 	 */
-	public String getGenre() {
+	public BookGenre getGenre() {
 		return genre;
 	}
 	/**
 	 * @param genre the genre to set
 	 */
-	public void setGenre(String genre) {
+	public void setGenre(BookGenre genre) {
 		this.genre = genre;
 	}
 	/**
